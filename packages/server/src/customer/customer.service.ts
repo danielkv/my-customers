@@ -25,7 +25,9 @@ export class CustomerService {
         const foundCustomers = await this.customerRepository.findMany(filter, pagination);
 
         // hidrates customers with coordinates and returns it
-        return Promise.all(foundCustomers.map((customer) => (hidrate ? this.hidrate(customer) : customer)));
+        if (hidrate) return Promise.all(foundCustomers.map((customer) => this.hidrate(customer)));
+
+        return foundCustomers;
     }
 
     /**

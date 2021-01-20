@@ -46,10 +46,10 @@ class CustomerController {
         const pagination: Pagination = req.body.pagination;
 
         // find customers
-        const filteredCustomers = await this.customerService.findMany(filter, pagination);
+        const filteredCustomers = await this.customerService.findMany(filter, pagination).catch((err) => next(err));
 
         // count all customers
-        const countCustomers = await this.customerService.findMany(filter, pagination);
+        const countCustomers = await this.customerService.findMany(filter, undefined, false);
 
         // response
         return res.json({

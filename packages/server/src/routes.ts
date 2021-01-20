@@ -6,6 +6,6 @@ const router = Router();
 
 // customer routes
 router.get('/customer/:customerId', (req, res, next) => customerController.findOne(req, res, next));
-router.get('/customers', customerController.findMany);
+router.get('/customers', (req, res, next) => customerController.findMany(req, res, next));
 
 export default router;
