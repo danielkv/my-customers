@@ -16,11 +16,11 @@ export interface ICityRepository {
      * Finds the city with the given param name
      * @param cityName Name of the city
      */
-    find(cityName: String): Promise<City | null>;
+    findOne(cityName: String): Promise<City | undefined>;
 
     /**
      * Lists the cities
      * @param pagination {offset, limit}
      */
-    list(pagination?: Pagination): Promise<City[]>;
+    findMany(pagination?: Pagination): Promise<City[]>;
 }

@@ -1,26 +1,43 @@
 import { Pagination } from '../common/types/pagination';
+import { ICustomerRepository } from '../customer/repository/customer-repository.interface';
 import { ICity } from './city.interface';
 import { City } from './city.model';
 import { ICityRepository } from './repository/city-repository.interface';
 
 export class CityService {
-    constructor(private cityRepository: ICityRepository) {}
+    constructor(private cityRepository: ICityRepository, private customerRepository: ICustomerRepository) {}
 
     create(city: ICity): Promise<City> {
         return this.cityRepository.create(city);
     }
 
-    async find(cityName: String): Promise<City | null> {
+    async findOne(cityName: String): Promise<City | undefined> {
         // find city by city name
-        const city = this.cityRepository.find(cityName);
+        const city = await this.cityRepository.findOne(cityName);
 
         // check if city exists
         if (!city) throw new Error('City not found');
 
-        return city;
+        return this.hidrate(city);
     }
 
-    list(pagination?: Pagination) {
-        return this.cityRepository.list(pagination);
+    async findMany(pagination?: Pagination) {
+        const cities = await this.cityRepository.findMany(pagination);
+
+        return cities.map((city) => this.hidrate(city));
+    }
+
+    private async hidrate(city: City): Promise<City> {
+        // find all customers within the given city
+        const customersFound = await this.customerRepository.findMany({ city: city.city });
+
+        // check if the city has any customer
+        if (!customersFound?.length) return city;
+
+        // hidrate with data
+        const hidratedCity = new City({ ...city, customers_total: customersFound.length });
+
+        // returns city
+        return hidratedCity;
     }
 }

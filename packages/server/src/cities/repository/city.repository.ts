@@ -17,15 +17,15 @@ class CityRepository implements ICityRepository {
         return cityInstace;
     }
 
-    async find(cityName: String): Promise<City | null> {
+    async findOne(cityName: String): Promise<City | undefined> {
         const cityFound = this.cities.find((city) => city.city === cityName);
 
-        if (!cityFound) return null;
+        if (!cityFound) return undefined;
 
         return cityFound;
     }
 
-    async list(pagination?: Pagination): Promise<City[]> {
+    async findMany(pagination?: Pagination): Promise<City[]> {
         const start = !pagination ? 0 : pagination.offset;
         const end = !pagination ? undefined : pagination.offset + pagination.limit;
 
