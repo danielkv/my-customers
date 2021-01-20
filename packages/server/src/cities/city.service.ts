@@ -11,8 +11,10 @@ export class CityService {
     }
 
     async find(cityName: String): Promise<City | null> {
+        // find city by city name
         const city = this.cityRepository.find(cityName);
 
+        // check if city exists
         if (!city) throw new Error('City not found');
 
         return city;
