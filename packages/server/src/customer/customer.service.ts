@@ -36,7 +36,9 @@ export class CustomerService {
         if (customer.lat && customer.long) return customer;
 
         // search for coordinates and check if it was found
-        const coordinates = await this.locationProvider.searchCoordinates(customer.city);
+        const coordinates = await this.locationProvider
+            .searchCoordinates(customer.city)
+            .catch(() => ({ lat: undefined, lng: undefined }));
         if (!coordinates) return customer;
 
         // hidrate with data
