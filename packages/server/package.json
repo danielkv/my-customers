@@ -1,0 +1,8 @@
+{
+    "name": "@my-customers/server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Daniel K. Guolo <danielkv@gmail.com>",
+    "license": "MIT",
+    "private": true
+}
