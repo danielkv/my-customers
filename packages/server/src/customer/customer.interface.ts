@@ -1,11 +1,6 @@
 import { GenderEnum } from '../common/enums/gender';
-import { ICustomer } from './customer.interface';
 
-export class Customer {
-    constructor(customer: Partial<ICustomer>) {
-        Object.assign(this, customer);
-    }
-
+export interface ICustomer {
     id: number;
 
     first_name: string;

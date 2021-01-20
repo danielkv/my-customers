@@ -18,8 +18,8 @@
     "dependencies": {
         "@googlemaps/google-maps-services-js": "^3.1.15",
         "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
         "express": "^4.17.1",
-        "node-cache": "^5.1.2",
-        "nodeenv": "^3.0.38"
+        "node-cache": "^5.1.2"
     }
 }

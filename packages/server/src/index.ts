@@ -1,6 +1,6 @@
 'use strict';
 
-import 'nodeenv/config';
+import 'dotenv/config';
 import cors from 'cors';
 import express, { json } from 'express';
 
