@@ -9,7 +9,7 @@ import { ICityRepository } from './city-repository.interface';
 class CityRepository implements ICityRepository {
     private cities: City[] = [];
 
-    async create(city: ICity): Promise<City> {
+    async create(city: Partial<ICity>): Promise<City> {
         const cityInstace = new City(city);
 
         this.cities.push(cityInstace);

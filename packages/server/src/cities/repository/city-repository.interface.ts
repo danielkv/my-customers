@@ -10,7 +10,7 @@ export interface ICityRepository {
      * This function creates a new instance of City and inserts it to a reporitory
      * @param city City to be created and inserted to a repository
      */
-    create(city: ICity): Promise<City>;
+    create(city: Partial<ICity>): Promise<City>;
 
     /**
      * Finds the city with the given param name
