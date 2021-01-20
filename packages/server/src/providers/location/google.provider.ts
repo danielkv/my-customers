@@ -26,6 +26,7 @@ export class GoogleProvider implements ILocationProvider {
 
         // get and check coordinates
         const coordinates = response?.data?.results?.[0]?.geometry?.location || null;
+
         if (!coordinates) throw new Error("Coordinates for this locations weren't found");
 
         // cache the results

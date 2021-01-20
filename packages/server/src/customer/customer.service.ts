@@ -39,10 +39,9 @@ export class CustomerService {
         if (!coordinates) return customer;
 
         // hidrate with data
-        customer.long = coordinates.lng;
-        customer.lat = coordinates.lat;
+        const hidratedCustomer = new Customer({ ...customer, lat: coordinates.lat, long: coordinates.lng });
 
         // return the customer
-        return customer;
+        return hidratedCustomer;
     }
 }

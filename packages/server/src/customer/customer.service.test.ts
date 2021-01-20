@@ -39,7 +39,7 @@ test('Find customer by ID (Not finding)', async () => {
 test('Find many users from a given city', async () => {
     // await initDataSource.execute();
 
-    const customers = await customerRepository.findMany({ city: 'Warner, NH' });
+    const customers = await customerService.findMany({ city: 'Warner, NH' });
 
     expect(customers.length).toBe(40);
 });
