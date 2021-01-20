@@ -1,6 +1,7 @@
 import { Pagination } from '../../common/types/pagination';
 import { ICustomer } from '../customer.interface';
 import { Customer } from '../customer.model';
+import { CustomerFilter } from './customer-filter.type';
 
 /**
  * Customer interface to connect to the repository (DB, memory, etc)
@@ -13,14 +14,14 @@ export interface ICustomerRepository {
     create(customer: ICustomer): Promise<Customer>;
 
     /**
-     * Finds the customer within the given id
+     * Find one customer within the given id
      * @param id id of the customer
      */
-    find(id: number): Promise<Customer | undefined>;
+    findOne(id: number): Promise<Customer | undefined>;
 
     /**
      * Lists the customers from a given city
      * @param pagination {offset, limit}
      */
-    list(city: string, pagination?: Pagination): Promise<Customer[]>;
+    findMany(filter?: CustomerFilter, pagination?: Pagination): Promise<Customer[]>;
 }
