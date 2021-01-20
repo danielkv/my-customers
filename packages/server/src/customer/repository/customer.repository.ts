@@ -12,7 +12,7 @@ const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) =>
 class CustomerRepository implements ICustomerRepository {
     private customers: Customer[] = [];
 
-    async create(customer: ICustomer): Promise<Customer> {
+    async create(customer: Partial<ICustomer>): Promise<Customer> {
         const cityInstace = new Customer(customer);
 
         this.customers.push(cityInstace);

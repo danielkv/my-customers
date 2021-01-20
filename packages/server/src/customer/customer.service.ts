@@ -8,7 +8,7 @@ import { ICustomerRepository } from './repository/customer-repository.interface'
 export class CustomerService {
     constructor(private customerRepository: ICustomerRepository, private locationProvider: ILocationProvider) {}
 
-    create(customer: ICustomer): Promise<Customer> {
+    create(customer: Partial<ICustomer>): Promise<Customer> {
         return this.customerRepository.create(customer);
     }
 

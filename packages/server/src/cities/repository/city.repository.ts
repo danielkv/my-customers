@@ -10,10 +10,7 @@ class CityRepository implements ICityRepository {
     private cities: City[] = [];
 
     async create(city: ICity): Promise<City> {
-        const cityInstace = new City();
-
-        cityInstace.city = city.city;
-        cityInstace.customers_total = city.customers_total;
+        const cityInstace = new City(city);
 
         this.cities.push(cityInstace);
 

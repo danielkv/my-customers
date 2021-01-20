@@ -11,7 +11,7 @@ export interface ICustomerRepository {
      * This function creates a new instance of Customer and inserts into a reporitory
      * @param customer Customer to be created and inserted into repository
      */
-    create(customer: ICustomer): Promise<Customer>;
+    create(customer: Partial<ICustomer>): Promise<Customer>;
 
     /**
      * Find one customer within the given id

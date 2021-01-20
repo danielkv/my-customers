@@ -14,7 +14,7 @@ class InitDataSource {
     /**
      * Execute all actions to insert all data to repository
      */
-    async execute(customersData: ICustomer[]): Promise<void> {
+    async execute(): Promise<void> {
         await this.insertCities(customersData);
         await this.insertCustomers(customersData);
     }
@@ -39,5 +39,4 @@ class InitDataSource {
     }
 }
 
-const initDataSource = new InitDataSource(cityRepository, customerRepository);
-initDataSource.execute(customersData);
+export const initDataSource = new InitDataSource(cityRepository, customerRepository);
