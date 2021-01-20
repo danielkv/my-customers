@@ -18,13 +18,28 @@ test('Create new customer', async () => {
 test('Find customer by ID', async () => {
     await initDataSource.execute();
 
-    const customers = await customerRepository.findMany();
-
-    await expect(customerService.findOne(2)).resolves.toMatchObject(customers.find((c) => c.id == 2));
+    await expect(customerService.findOne(2)).resolves.toMatchObject({
+        id: 2,
+        first_name: 'Margaret',
+        last_name: 'Mendoza',
+        email: 'mmendoza1@sina.com.cn',
+        gender: 'Female',
+        company: 'Skipfire',
+        city: 'East Natchitoches, PA',
+        title: 'VP Marketing',
+    });
 });
 
 test('Find customer by ID (Not finding)', async () => {
     await initDataSource.execute();
 
     await expect(customerService.findOne(1010)).rejects.toThrowError();
+});
+
+test('Find many users from a given city', async () => {
+    // await initDataSource.execute();
+
+    const customers = await customerRepository.findMany({ city: 'Warner, NH' });
+
+    expect(customers.length).toBe(40);
 });
