@@ -1,5 +1,6 @@
 'use strict';
 
+import 'nodeenv/config';
 import cors from 'cors';
 import express, { json } from 'express';
 
