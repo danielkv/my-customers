@@ -12,19 +12,20 @@ export class CustomerService {
         return this.customerRepository.create(customer);
     }
 
-    async findOne(id: number): Promise<Customer> {
+    async findOne(id: number, hidrate: boolean = true): Promise<Customer> {
         const foundCustomer = await this.customerRepository.findOne(id);
 
         if (!foundCustomer) throw new Error('Customer not found');
 
-        return foundCustomer;
+        // hidrate customer with coordinates and returns it
+        return hidrate ? this.hidrate(foundCustomer) : foundCustomer;
     }
 
-    async findMany(filter?: CustomerFilter, pagination?: Pagination): Promise<Customer[]> {
+    async findMany(filter?: CustomerFilter, pagination?: Pagination, hidrate: boolean = true): Promise<Customer[]> {
         const foundCustomers = await this.customerRepository.findMany(filter, pagination);
 
         // hidrates customers with coordinates and returns it
-        return Promise.all(foundCustomers.map((customer) => this.hidrate(customer)));
+        return Promise.all(foundCustomers.map((customer) => (hidrate ? this.hidrate(customer) : customer)));
     }
 
     /**
