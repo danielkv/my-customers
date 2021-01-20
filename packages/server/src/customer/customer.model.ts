@@ -1,4 +1,3 @@
-import { GenderEnum } from '../common/enums/gender';
 import { ICustomer } from './customer.interface';
 
 export class Customer {
@@ -14,7 +13,7 @@ export class Customer {
 
     email: string;
 
-    gender: GenderEnum;
+    gender: string;
 
     company: string;
 

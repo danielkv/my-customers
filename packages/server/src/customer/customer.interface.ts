@@ -1,5 +1,3 @@
-import { GenderEnum } from '../common/enums/gender';
-
 export interface ICustomer {
     id: number;
 
@@ -9,7 +7,7 @@ export interface ICustomer {
 
     email: string;
 
-    gender: GenderEnum;
+    gender: string;
 
     company: string;
 
