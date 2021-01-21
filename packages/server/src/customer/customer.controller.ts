@@ -14,10 +14,10 @@ import { customerRepository } from './repository/customer.repository';
  * This class is a singleton to avoid reinstaciate properties
  */
 class CustomerController {
-    protected cacheProvider: ICacheProvider;
-    protected locationProvider: ILocationProvider;
-    protected customerService: CustomerService;
-    protected pageInfoHelper: PageInfoHelper;
+    private cacheProvider: ICacheProvider;
+    private locationProvider: ILocationProvider;
+    private customerService: CustomerService;
+    private pageInfoHelper: PageInfoHelper;
 
     /**
      * Instanciate all properties needed

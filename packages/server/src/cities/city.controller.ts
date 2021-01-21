@@ -10,8 +10,8 @@ import { cityRepository } from './repository/city.repository';
  * This class is a singleton to avoid reinstaciate properties
  */
 class CityController {
-    protected cityRepository: CityService;
-    protected pageInfoHelper: PageInfoHelper;
+    private cityRepository: CityService;
+    private pageInfoHelper: PageInfoHelper;
 
     /**
      * Instanciate all properties needed
@@ -36,16 +36,16 @@ class CityController {
     async findMany(req: Request, res: Response, next: NextFunction) {
         const pagination: Pagination = req.body.pagination;
 
-        // find customers
+        // find cities
         const filteredCities = await this.cityRepository.findMany(pagination);
 
-        // count all customers
-        const countCustomers = await this.cityRepository.findMany();
+        // count all cities
+        const countCities = await this.cityRepository.findMany();
 
         // response
         return res.json({
             items: filteredCities,
-            pageInfo: this.pageInfoHelper.get(countCustomers.length, pagination),
+            pageInfo: this.pageInfoHelper.get(countCities.length, pagination),
         });
     }
 }
