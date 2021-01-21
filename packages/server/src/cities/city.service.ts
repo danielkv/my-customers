@@ -24,7 +24,7 @@ export class CityService {
     async findMany(pagination?: Pagination, hidrate: boolean = true) {
         const cities = await this.cityRepository.findMany(pagination);
 
-        if (hidrate) return cities.map((city) => this.hidrate(city));
+        if (hidrate) return Promise.all(cities.map((city) => this.hidrate(city)));
 
         return cities;
     }

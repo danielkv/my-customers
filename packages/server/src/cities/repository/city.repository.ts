@@ -17,8 +17,8 @@ class CityRepository implements ICityRepository {
         return cityInstace;
     }
 
-    async findOne(cityName: String): Promise<City | undefined> {
-        const cityFound = this.cities.find((city) => city.city === cityName);
+    async findOne(cityName: string): Promise<City | undefined> {
+        const cityFound = this.cities.find((city) => city.city.includes(cityName));
 
         if (!cityFound) return undefined;
 
