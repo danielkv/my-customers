@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/styles.module.scss';
 import cityStyles from '../styles/city-styles.module.scss';
 import RightIcon from '../../public/icons/chevron-right.svg';
-import { ICustomerProfile } from '../interfaces/user-prifile.interface';
+import { ICustomerProfile } from '../interfaces/user-profile.interface';
 
 interface CurtomerProfileBoxProps {
     customer: ICustomerProfile;
