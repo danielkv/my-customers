@@ -5,21 +5,15 @@ import CustomerProfileBox from '../../components/customer-profile-box';
 import BackButton from '../../components/back-button';
 import GoogleMapReact from 'google-map-react';
 import MapPinIcon from '../../../public/icons/map-pin.svg';
+import { ICustomerProfile, ICustomerProfileList } from '../../interfaces/customer-profile.interface';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { fetcher } from '../../helpers/fetcher';
 
-const customer = {
-    id: 2,
-    first_name: 'Margaret',
-    last_name: 'Mendoza',
-    email: 'mmendoza1@sina.com.cn',
-    gender: 'Female',
-    company: 'Skipfire',
-    city: 'East Natchitoches, PA',
-    title: 'VP Marketing',
-    lat: 31.7607195,
-    long: -93.08627489999999,
-};
+interface CustomerProps {
+    customer: ICustomerProfile;
+}
 
-export default function Customer() {
+export default function Customer({ customer }: CustomerProps) {
     return (
         <Layout>
             <section id={customerStyles.customerWrapper}>
@@ -61,3 +55,21 @@ export default function Customer() {
         </Layout>
     );
 }
+
+export const getStaticProps: GetStaticProps<CustomerProps> = async ({ params }) => {
+    const customer: ICustomerProfile = await fetcher(`/customer/${String(params.customerId)}`);
+
+    return {
+        props: { customer },
+        revalidate: 30 * 60, // revalidate in 30 minutes
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async (context) => {
+    // get initial possible
+    const customersList: ICustomerProfileList = await fetcher('/customers');
+
+    const paths = customersList.items.map((customer) => ({ params: { customerId: String(customer.id) } }));
+
+    return { paths, fallback: true };
+};
