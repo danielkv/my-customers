@@ -9,7 +9,7 @@ import { useSWRInfinite } from 'swr';
 
 // pagination inital config
 const paginationConfig = {
-    limit: 5,
+    limit: 8,
 };
 
 /**

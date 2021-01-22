@@ -13,7 +13,7 @@ import ReactPaginate from 'react-paginate';
 
 // pagination inital config
 const paginationConfig = {
-    limit: 5,
+    limit: 6,
 };
 
 interface CityProps {
