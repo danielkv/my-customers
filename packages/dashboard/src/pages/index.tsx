@@ -47,7 +47,7 @@ export default function Home({ citiesList: initialCitiesList }: HomeProps) {
                 )}
             </section>
             {!reachedEnd && (
-                <section className={styles.loadMoreSection}>
+                <section className={styles.paginationSection}>
                     {isValidating ? (
                         <div className={styles.loading}>Loading...</div>
                     ) : (
