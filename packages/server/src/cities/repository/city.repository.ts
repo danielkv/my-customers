@@ -26,8 +26,8 @@ class CityRepository implements ICityRepository {
     }
 
     async findMany(pagination?: Pagination): Promise<City[]> {
-        const start = !pagination ? 0 : pagination.offset;
-        const end = !pagination ? undefined : pagination.offset + pagination.limit;
+        const start = pagination?.offset && pagination?.limit ? pagination.offset : 0;
+        const end = pagination?.offset && pagination?.limit ? pagination.offset + pagination.limit : undefined;
 
         const cities = this.cities.slice(start, end);
 

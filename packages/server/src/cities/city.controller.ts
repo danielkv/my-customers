@@ -34,7 +34,10 @@ class CityController {
     }
 
     async findMany(req: Request, res: Response, next: NextFunction) {
-        const pagination: Pagination = req.body.pagination;
+        const pagination: Pagination = {
+            offset: req?.query?.offset ? Number(req.query.offset) : undefined,
+            limit: req?.query?.limit ? Number(req.query.limit) : undefined,
+        };
 
         // find cities
         const filteredCities = await this.cityRepository.findMany(pagination);

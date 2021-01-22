@@ -31,8 +31,8 @@ class CustomerRepository implements ICustomerRepository {
     async findMany(filter?: CustomerFilter, pagination?: Pagination): Promise<Customer[]> {
         const filteredCustomers = this.applyFilter(this.customers, filter);
 
-        const start = !pagination ? 0 : pagination.offset;
-        const end = !pagination ? undefined : pagination.offset + pagination.limit;
+        const start = pagination?.offset && pagination?.limit ? pagination.offset : 0;
+        const end = pagination?.offset && pagination?.limit ? pagination.offset + pagination.limit : undefined;
 
         const cities = filteredCustomers.slice(start, end);
 
