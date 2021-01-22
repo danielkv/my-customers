@@ -75,3 +75,47 @@
         }
     }
 }
+
+.loadMoreSection {
+    width: 800px;
+    align-self: center;
+    display: flex;
+    margin-top: 20px;
+
+    .loadMoreButton {
+        background-color: #195877;
+        border: none;
+        flex: 1;
+        height: 60px;
+        text-transform: capitalize;
+        color: white;
+        border-radius: 15px;
+        font-family: inherit;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #437791;
+        }
+        &:active,
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    .loading {
+        align-self: center;
+        justify-self: center;
+        text-align: center;
+        background-color: #195877;
+        border: none;
+        flex: 1;
+        line-height: 60px;
+        text-transform: capitalize;
+        color: white;
+        border-radius: 15px;
+        font-family: inherit;
+        font-size: 16px;
+    }
+}
