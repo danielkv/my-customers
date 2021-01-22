@@ -12,7 +12,7 @@ interface HomeProps {
 }
 
 export default function Home({ citiesList: initialCitiesList }: HomeProps) {
-    const { data: citiesList } = useSWR<ICityList>('/api/posts', fetcher, { initialData: initialCitiesList });
+    const { data: citiesList } = useSWR<ICityList>('/cities', fetcher, { initialData: initialCitiesList });
 
     return (
         <Layout>
@@ -27,7 +27,7 @@ export default function Home({ citiesList: initialCitiesList }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-    const citiesList: ICityList = await fetcher('/cities');
+    const citiesList: ICityList = await fetcher('/cities', { offset: 0, limit: 10 });
 
     return {
         props: {

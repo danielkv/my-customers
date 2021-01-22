@@ -42,8 +42,11 @@ class CustomerController {
     }
 
     async findMany(req: Request, res: Response, next: NextFunction) {
-        const filter: CustomerFilter = req.body.filter;
-        const pagination: Pagination = req.body.pagination;
+        const filter: CustomerFilter | undefined = req?.query?.city ? { city: String(req.query.city) } : undefined;
+        const pagination: Pagination = {
+            offset: req?.query?.offset ? Number(req.query.offset) : undefined,
+            limit: req?.query?.limit ? Number(req.query.limit) : undefined,
+        };
 
         // find customers
         const filteredCustomers = await this.customerService.findMany(filter, pagination).catch((err) => next(err));

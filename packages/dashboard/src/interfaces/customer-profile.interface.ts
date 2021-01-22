@@ -1,3 +1,5 @@
+import { IPageInfo } from './page-info.interface';
+
 export interface ICustomerProfile {
     id: number;
 
@@ -18,4 +20,9 @@ export interface ICustomerProfile {
     lat?: number;
 
     long?: number;
+}
+
+export interface ICustomerProfileList {
+    items: ICustomerProfile[];
+    pageInfo: IPageInfo;
 }

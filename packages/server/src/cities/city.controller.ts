@@ -23,7 +23,7 @@ class CityController {
 
     async findOne(req: Request, res: Response, next: NextFunction) {
         // extract body params and check if it's defined
-        const search: string = req?.body?.search;
+        const search = req?.query?.search ? String(req.query.search) : undefined;
         if (!search) return next(new Error('Search is not provided'));
 
         // find city by name

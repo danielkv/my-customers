@@ -1,0 +1,51 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add axios
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python27\;C:\Python27\Scripts;C:\Python38\Scripts\;C:\Python38\;C:\Python37\Scripts\;C:\Python37\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Program Files\Git\cmd;C:\Program Files (x86)\OPOS\Epson2;C:\Users\danie\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\AWSCLI\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Ruby26-x64\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Users\danie\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\danie\AppData\Roaming\npm;C:\Users\danie\AppData\Local\GitHubDesktop\bin;C:\Program Files\heroku\bin;%NVM_HOME%;%NVM_SYMLINK%;C:\Users\danie\AppData\Local\Yarn\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;C:\Users\danie\AppData\Local\hyper\app-3.0.2\resources\bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  14.15.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\danie\Documents\GitHub\my-customers\node_modules\sharp\build\Release\libvips-cpp.dll'
+
+npm manifest: 
+  {
+    "name": "@my-customers/dashboard",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Daniel K. Guolo <danielkv@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    },
+    "dependencies": {
+      "google-map-react": "^2.1.9",
+      "next": "^10.0.5",
+      "react": "^17.0.1",
+      "react-dom": "^17.0.1",
+      "sass": "^1.32.5",
+      "swr": "^0.4.0"
+    },
+    "devDependencies": {
+      "@svgr/webpack": "^5.5.0",
+      "@types/google-map-react": "^2.1.0",
+      "@types/react": "^17.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
