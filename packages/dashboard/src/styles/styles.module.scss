@@ -1,0 +1,76 @@
+.pageTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 45px;
+}
+
+.box {
+    background-color: white;
+    color: #333;
+    padding: 25px 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+    .boxID {
+        color: #707070;
+    }
+
+    .boxInfoRow:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    .boxLabel {
+        color: #707070;
+        font-size: 14px;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .boxInfo {
+        font-size: 16px;
+    }
+    .boxBigInfo {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .boxIconButton {
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        border-radius: 0 20px 20px 0;
+
+        transition: background-color ease-in-out 0.2s, width ease-in-out 0.2s;
+
+        &:hover {
+            width: 80px;
+            background-color: rgba(53, 137, 180, 0.2);
+        }
+
+        .boxIcon {
+            color: #3589b4;
+        }
+    }
+}
+
+.backButton {
+    align-self: center;
+    margin-bottom: 25px;
+    a {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        :hover {
+            text-decoration: underline;
+        }
+    }
+}
