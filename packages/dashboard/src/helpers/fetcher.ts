@@ -17,5 +17,5 @@ export function fetcher(url: string, body?: ObjectLike) {
 
     if (body) opts.body = JSON.stringify(body);
 
-    return fetch(path.join(urlBase, url), opts);
+    return fetch(path.join(urlBase, url), opts).then((response) => response.json());
 }
