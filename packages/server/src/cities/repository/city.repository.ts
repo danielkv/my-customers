@@ -1,3 +1,4 @@
+import { ExtractPaginationHelper } from '../../common/helpers/extract-pagination.helper';
 import { Pagination } from '../../common/types/pagination';
 import { ICity } from '../city.interface';
 import { City } from '../city.model';
@@ -8,6 +9,8 @@ import { ICityRepository } from './city-repository.interface';
  */
 class CityRepository implements ICityRepository {
     private cities: City[] = [];
+
+    constructor(private paginationHelper: ExtractPaginationHelper) {}
 
     async create(city: Partial<ICity>): Promise<City> {
         const cityInstace = new City(city);
@@ -26,8 +29,7 @@ class CityRepository implements ICityRepository {
     }
 
     async findMany(pagination?: Pagination): Promise<City[]> {
-        const start = pagination?.offset && pagination?.limit ? pagination.offset : 0;
-        const end = pagination?.offset && pagination?.limit ? pagination.offset + pagination.limit : undefined;
+        const { start, end } = this.paginationHelper.execute(pagination);
 
         const cities = this.cities.slice(start, end);
 
@@ -35,4 +37,5 @@ class CityRepository implements ICityRepository {
     }
 }
 
-export const cityRepository = new CityRepository();
+const paginationHelper = new ExtractPaginationHelper();
+export const cityRepository = new CityRepository(paginationHelper);

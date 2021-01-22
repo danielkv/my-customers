@@ -1,16 +1,17 @@
+import { ExtractPaginationHelper } from '../../common/helpers/extract-pagination.helper';
 import { Pagination } from '../../common/types/pagination';
 import { ICustomer } from '../customer.interface';
 import { Customer } from '../customer.model';
 import { CustomerFilter } from './customer-filter.type';
 import { ICustomerRepository } from './customer-repository.interface';
 
-const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
-
 /**
  * This class used as a sigleton to mantain the customers saved in memory
  */
 class CustomerRepository implements ICustomerRepository {
     private customers: Customer[] = [];
+
+    constructor(private paginationHelper: ExtractPaginationHelper) {}
 
     async create(customer: Partial<ICustomer>): Promise<Customer> {
         const cityInstace = new Customer(customer);
@@ -31,8 +32,7 @@ class CustomerRepository implements ICustomerRepository {
     async findMany(filter?: CustomerFilter, pagination?: Pagination): Promise<Customer[]> {
         const filteredCustomers = this.applyFilter(this.customers, filter);
 
-        const start = pagination?.offset && pagination?.limit ? pagination.offset : 0;
-        const end = pagination?.offset && pagination?.limit ? pagination.offset + pagination.limit : undefined;
+        const { start, end } = this.paginationHelper.execute(pagination);
 
         const cities = filteredCustomers.slice(start, end);
 
@@ -50,4 +50,5 @@ class CustomerRepository implements ICustomerRepository {
     }
 }
 
-export const customerRepository = new CustomerRepository();
+const pageInfoHelper = new ExtractPaginationHelper();
+export const customerRepository = new CustomerRepository(pageInfoHelper);
