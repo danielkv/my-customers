@@ -43,15 +43,19 @@ export default function Customer() {
                 </div>
                 <div className={customerStyles.rightColumn}>
                     <h4 className={customerStyles.mapSectionTitle}>Location</h4>
-                    <div className={styles.box} style={{ padding: 0, width: '100%', height: '100%' }}>
-                        <GoogleMapReact
-                            bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
-                            center={{ lat: customer.lat, lng: customer.long }}
-                            zoom={11}
-                        >
-                            <MapPinIcon lat={customer.lat} lng={customer.long} className={customerStyles.mapPin} />
-                        </GoogleMapReact>
-                    </div>
+                    {customer?.lat && customer?.long ? (
+                        <div className={styles.box} style={{ padding: 0, width: '100%', height: '100%' }}>
+                            <GoogleMapReact
+                                bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+                                center={{ lat: customer.lat, lng: customer.long }}
+                                zoom={11}
+                            >
+                                <MapPinIcon lat={customer.lat} lng={customer.long} className={customerStyles.mapPin} />
+                            </GoogleMapReact>
+                        </div>
+                    ) : (
+                        <div className={styles.box}>Location could not be found</div>
+                    )}
                 </div>
             </section>
         </Layout>
