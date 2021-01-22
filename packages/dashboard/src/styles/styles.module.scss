@@ -76,10 +76,32 @@
     }
 }
 
+.button {
+    background-color: #195877;
+    border: none;
+    padding: 15px 25px;
+    text-transform: capitalize;
+    color: white;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #437791;
+    }
+    &:active,
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
 .paginationSection {
     width: 800px;
     align-self: center;
     display: flex;
+
     margin-top: 20px;
 
     .loadMoreButton {
@@ -125,6 +147,8 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    margin-left: 0;
+    padding-left: 0;
 
     li {
         list-style: none;
@@ -160,4 +184,34 @@
             }
         }
     }
+}
+
+.loginSection {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    .loginTitle {
+        font-weight: normal;
+    }
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.logoutButton {
+    margin-left: 20px;
+    padding: 10px 18px;
+    font-size: 14px;
+}
+
+.loadingApp {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    font-size: 38px;
 }

@@ -39,7 +39,7 @@ export default function City({ customerList: initialCustumerList, city }: CityPr
     }
 
     const { data: customerList, isValidating } = useSWR<ICustomerProfileList>(url, fetcher, {
-        initialData: page === 0 ? initialCustumerList : undefined,
+        revalidateOnFocus: false,
     });
 
     //console.log(url, customerList.items[0].id);
