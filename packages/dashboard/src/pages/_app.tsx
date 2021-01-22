@@ -9,7 +9,11 @@ export default function MyApp({ Component, pageProps }) {
     const origin = global?.window?.location.origin || '';
 
     return (
-        <Auth0Provider domain="danielkv.us.auth0.com" clientId="5t7AMzHjqiinNcpadkEjrBBrrui9Rr6f" redirectUri={origin}>
+        <Auth0Provider
+            domain={process.env.NEXT_PUBLIC_AUTH_DOMAIN}
+            clientId={process.env.NEXT_PUBLIC_AUTH_TOKEN}
+            redirectUri={origin}
+        >
             <CheckAuthentication>
                 <SWRConfig value={SWRGlobalOptions}>
                     <Component {...pageProps} />
