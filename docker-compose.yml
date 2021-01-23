@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+    server:
+        build:
+            context: packages/server
+            dockerfile: Dockerfile
+        restart: always
+        env_file:
+            - packages/server/.env
+
+        ports:
+            - '3001:3001'
+        command: yarn start
+    dashboard:
+        build:
+            context: packages/dashboard
+            dockerfile: Dockerfile
+        restart: always
+        env_file:
+            - packages/dashboard/prod.env
+        depends_on:
+            - server
+        links:
+            - 'server'
+        ports:
+            - '3000:3000'
+        command: yarn start

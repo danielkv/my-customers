@@ -4,7 +4,7 @@ interface ObjectLike {
     [key: string]: any;
 }
 
-export const urlBase = 'http://localhost:3001';
+export const urlBase = 'http://localhost:3001'; //process.env.NEXT_PUBLIC_API_URL;
 
 /**
  * All requests should pass through this function

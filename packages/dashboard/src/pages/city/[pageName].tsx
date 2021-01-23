@@ -3,7 +3,7 @@ import styles from '../../styles/styles.module.scss';
 import cityStyles from '../../styles/city-styles.module.scss';
 import CustomerProfileBox from '../../components/customer-profile-box';
 import BackButton from '../../components/back-button';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { fetcher } from '../../helpers/fetcher';
 import { ICityList } from '../../interfaces/city.interface';
 import { ICustomerProfileList } from '../../interfaces/customer-profile.interface';
@@ -17,7 +17,6 @@ const paginationConfig = {
 };
 
 interface CityProps {
-    customerList: ICustomerProfileList;
     city: string;
 }
 
@@ -29,7 +28,7 @@ const getKey = (city: string, pageIndex: number) => {
     return `/customers?offset=${offset}&limit=${paginationConfig.limit}&city=${escape(city)}`; // SWR key
 };
 
-export default function City({ customerList: initialCustumerList, city }: CityProps) {
+export default function City({ city }: CityProps) {
     const [page, setPage] = useState(0);
 
     const url = getKey(city, page);
@@ -78,24 +77,10 @@ export default function City({ customerList: initialCustumerList, city }: CityPr
     );
 }
 
-export const getStaticProps: GetStaticProps<CityProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<CityProps> = async ({ params }) => {
     const city = String(params.pageName);
 
-    const url = getKey(city, 0);
-
-    const customerList: ICustomerProfileList = await fetcher(url);
-
     return {
-        props: { customerList, city },
-        revalidate: 5 * 60, // revalidate in 5 minutes
+        props: { city },
     };
-};
-
-export const getStaticPaths: GetStaticPaths = async (context) => {
-    // get initial possible
-    const citiesList: ICityList = await fetcher('/cities', { offset: 0, limit: 10 });
-
-    const paths = citiesList.items.map((city) => ({ params: { pageName: city.city } }));
-
-    return { paths, fallback: true };
 };

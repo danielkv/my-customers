@@ -2,7 +2,6 @@ import Layout from '../components/layout';
 import styles from '../styles/styles.module.scss';
 import cityStyles from '../styles/city-styles.module.scss';
 import CityBox from '../components/city-box';
-import { GetStaticProps } from 'next';
 import { fetcher } from '../helpers/fetcher';
 import { ICityList } from '../interfaces/city.interface';
 import { useSWRInfinite } from 'swr';
