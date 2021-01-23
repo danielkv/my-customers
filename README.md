@@ -1,13 +1,18 @@
 # My Customers
 
-Project made for testing interview
+Project made for interview test
 
-## Summary
+## Table of contents
 
--   [How to run this project](#howto)
--   [API Documentation](#apidocs)
+- [My Customers](#my-customers)
+	- [Table of contents](#table-of-contents)
+	- [How to run this project](#how-to-run-this-project)
+	- [API Documentation](#api-documentation)
+		- [REST API](#rest-api)
+			- [Endpoints](#endpoints)
+		- [GraphQL API](#graphql-api)
 
-## <a name='howto'></a>How to run this project
+## How to run this project
 
 This project uses **docker** and **docker-compose** to run.
 
@@ -21,11 +26,11 @@ docker-compose up
 
 The **dashboard** should be running on `https://localhost:3000` and the **server API** on `https://localhost:3001`
 
-## <a name='apidocs'></a>API Documentation
-
-### REST API
+## API Documentation
 
 The backend was build on top of **ExpressJS** with **Typescript**.
+
+### REST API
 
 Base URL
 
@@ -35,7 +40,9 @@ Base URL
 
 Find many cities
 
-> GET /cities
+```
+GET /cities
+```
 
 | Query Param | Type     | Required | Default     | Description                |
 | ----------- | -------- | -------- | ----------- | -------------------------- |
@@ -100,7 +107,9 @@ The response returns 2 objects: **items** and **pageInfo**
 
 Search 1 city
 
-> GET /city
+```
+GET /city
+```
 
 | Query Param | Type     | Required | Default | Description                                 |
 | ----------- | -------- | -------- | ------- | ------------------------------------------- |
@@ -131,7 +140,9 @@ The response returns 1 object: the city object
 
 Find many customers
 
-> GET /customers
+```
+GET /customers
+```
 
 | Query Param | Type     | Required | Default     | Description             |
 | ----------- | -------- | -------- | ----------- | ----------------------- |
@@ -213,7 +224,9 @@ The response returns 2 objects: **items** and **pageInfo**
 
 Find customer by id
 
-> GET /customer/:customerId
+```
+GET /customer/:customerId
+```
 
 | Param      | Type     | Required | Default | Description |
 | ---------- | -------- | -------- | ------- | ----------- |
@@ -247,3 +260,7 @@ The response returns 1 object: the customer object
 **Example**
 
 `GET /customer/305`
+
+### GraphQL API
+
+This api is in development
