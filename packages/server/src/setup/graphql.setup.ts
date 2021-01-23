@@ -1,35 +1,23 @@
 import { Express } from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
+import { buildSchema } from 'type-graphql';
+import path from 'path';
 
+/**
+ * Setup GraphQL types and endpoint
+ * @param app App instance
+ */
 export async function setupGraphQL(app: Express): Promise<ApolloServer> {
-    const typeDefs = gql`
-        # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-        # This "Book" type defines the queryable fields for every book in our data source.
-        type Book {
-            title: String
-            author: String
-        }
-
-        # The "Query" type is special: it lists all of the available queries that
-        # clients can execute, along with the return type for each. In this
-        # case, the "books" query returns an array of zero or more Books (defined above).
-        type Query {
-            books: [Book]
-        }
-    `;
-    const resolvers = {
-        Query: {
-            books: () => 'books',
-        },
-    };
-
-    const server = new ApolloServer({
-        typeDefs,
-        resolvers,
+    // build schema
+    const schema = await buildSchema({
+        resolvers: [path.join(__dirname, '..', '/**/*.resolver.{ts,js}')],
     });
 
-    server.applyMiddleware({ app });
+    const server = new ApolloServer({
+        schema,
+    });
+
+    server.applyMiddleware({ app, path: '/graphql' });
 
     return server;
 }
