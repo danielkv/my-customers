@@ -1,6 +1,7 @@
 'use strict';
 
 import 'dotenv/config';
+import 'reflect-metadata';
 
 import express from 'express';
 import { initDataSource } from './init-data-source';
