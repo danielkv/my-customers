@@ -23,13 +23,15 @@ The **dashboard** should be running on `https://localhost:3000` and the **server
 
 ## <a name='apidocs'></a>API Documentation
 
+### REST API
+
 The backend was build on top of **ExpressJS** with **Typescript**.
 
 Base URL
 
 > `https://localhost:3001/`
 
-### Endpoints
+#### Endpoints
 
 Find many cities
 
@@ -41,15 +43,15 @@ Find many cities
 | limit       | `number` | No       | `undefined` | Number of rows to retrieve |
 
 **Response** \
-The response returns 2 objects: **items** and **pageIndo**
+The response returns 2 objects: **items** and **pageInfo**
 
 <details>
-	<summary><b>response</b>: the response</summary>
+	<summary><b>response</b>: the response from server</summary>
 	<p>
 
     {
     	items: array of cities
-    	pageInfo: array
+    	pageInfo: pagination details
     }
 
 </p>
@@ -138,7 +140,7 @@ Find many customers
 | limit       | `number` | No       | `undefined` | Customers per page      |
 
 **Response** \
-The response returns 2 objects: **items** and **pageIndo**
+The response returns 2 objects: **items** and **pageInfo**
 
 <details>
 	<summary><b>response</b>: the response from server</summary>
@@ -146,7 +148,7 @@ The response returns 2 objects: **items** and **pageIndo**
 
     {
     	items: array of customers
-    	pageInfo: array
+    	pageInfo: pagination details
     }
 
 </p>
