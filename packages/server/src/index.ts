@@ -1,27 +1,27 @@
 'use strict';
 
 import 'dotenv/config';
-import cors from 'cors';
-import express, { json } from 'express';
+import 'reflect-metadata';
+
+import express from 'express';
 import { initDataSource } from './init-data-source';
+import { setupServer } from './setup/server.setup';
+import { setupGraphQL } from './setup/graphql.setup';
 
-import router from './routes';
-import { errorHandler } from './error-handler';
+async function bootstrap() {
+    // initial setup
+    await initDataSource.execute();
 
-initDataSource.execute();
+    // express initial setup
+    const app = express();
 
-// express initial setup
-const app = express();
-app.use(json());
-app.use(cors());
+    setupServer(app);
+    await setupGraphQL(app);
 
-// setup routes
-app.use(router);
+    // start app
+    app.listen(3001, () => {
+        console.log('🚀 Server started on http://localhost:3001');
+    });
+}
 
-// setup error handler
-app.use(errorHandler);
-
-// start app
-app.listen(3001, () => {
-    console.log('🚀 Server started on http://localhost:3001');
-});
+bootstrap();
