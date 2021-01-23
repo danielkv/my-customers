@@ -127,6 +127,7 @@
     }
 }
 .loading {
+    margin: 0 auto;
     align-self: center;
     justify-self: center;
     text-align: center;
@@ -205,4 +206,20 @@
     margin-left: 20px;
     padding: 10px 18px;
     font-size: 14px;
+}
+
+.pageNotFound {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+        margin-right: 15px;
+    }
+    & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 }

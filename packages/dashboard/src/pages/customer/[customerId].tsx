@@ -20,7 +20,18 @@ export default function Customer({ customerId }: CustomerProps) {
 
     return (
         <Layout>
-            {isValidating && <LoadingBlock />}
+            {isValidating ? (
+                <LoadingBlock />
+            ) : (
+                !customer && (
+                    <>
+                        <div style={{ marginBottom: 20, width: 800, alignSelf: 'center' }} className={styles.box}>
+                            Customer not found
+                        </div>
+                        <BackButton href="/" label={`Back to cities`} />
+                    </>
+                )
+            )}
             {customer && (
                 <section id={customerStyles.customerWrapper}>
                     <div className={customerStyles.leftColumn}>

@@ -41,17 +41,25 @@ export default function City({ city }: CityProps) {
         revalidateOnFocus: false,
     });
 
-    //console.log(url, customerList.items[0].id);
-
     return (
         <Layout>
             <h1 className={styles.pageTitle}>{city}</h1>
             <div style={{ width: 900, alignSelf: 'center' }}>
                 <BackButton href="/" label="Back to Cities" />
             </div>
-            {isValidating || !customerList ? (
+
+            {isValidating ? (
                 <div className={styles.loading}>Loading...</div>
             ) : (
+                !customerList?.items.length && (
+                    <>
+                        <div style={{ marginBottom: 20, width: 800, alignSelf: 'center' }} className={styles.box}>
+                            No customers found
+                        </div>
+                    </>
+                )
+            )}
+            {customerList && (
                 <>
                     <section id={cityStyles.customersWrapper}>
                         {customerList.items.map((customer) => (
