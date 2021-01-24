@@ -7,10 +7,15 @@ Project made for interview test
 - [My Customers](#my-customers)
 	- [Table of contents](#table-of-contents)
 	- [How to run this project](#how-to-run-this-project)
+	- [Dashboard](#dashboard)
 	- [API Documentation](#api-documentation)
 		- [REST API](#rest-api)
 			- [Endpoints](#endpoints)
 		- [GraphQL API](#graphql-api)
+			- [Endpoint](#endpoint)
+			- [Query](#query)
+			- [Types](#types)
+			- [Input](#input)
 
 ## How to run this project
 
@@ -25,6 +30,10 @@ docker-compose up
 ```
 
 The **dashboard** should be running on `https://localhost:3000` and the **server API** on `https://localhost:3001`
+
+## Dashboard
+
+The dashboard was build on top of **NestJS**. The built in routes API improved the development
 
 ## API Documentation
 
@@ -263,4 +272,67 @@ The response returns 1 object: the customer object
 
 ### GraphQL API
 
-This api is in development
+The GraphQL API was created on top of **Apollo Server** with **TypeGraphQL**. It works with decorators to build the schema.
+
+#### Endpoint
+
+```
+POST /graphql
+```
+
+#### Query
+
+```graphql
+type Query {
+    findOneCity(search: String!): City!
+    findManyCities(limit: Float, offset: Float): CityList!
+    findOneCustomer(customerId: Float!): Customer!
+    findManyCustomers(limit: Float, offset: Float, filter: CustomerFilter): CustomerList!
+}
+```
+
+#### Types
+
+```graphql
+type Customer {
+    id: Float!
+    first_name: String!
+    last_name: String!
+    email: String!
+    gender: String!
+    company: String!
+    city: String!
+    title: String!
+    lat: Float
+    long: Float
+}
+
+type City {
+    city: String!
+    customers_total: Float
+}
+
+type CityList {
+    items: [City!]!
+    pageInfo: PageInfo!
+}
+
+type CustomerList {
+    items: [Customer!]!
+    pageInfo: PageInfo!
+}
+
+type PageInfo {
+    itemsTotal: Float
+    limit: Float
+    offset: Float
+}
+```
+
+#### Input
+
+```graphql
+input CustomerFilter {
+    city: String
+}
+```
