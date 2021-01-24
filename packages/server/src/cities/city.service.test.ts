@@ -1,5 +1,4 @@
 import { customerRepository } from '../customer/repository/customer.repository';
-import { initDataSource } from '../init-data-source';
 import { CityService } from './city.service';
 import { cityRepository } from './repository/city.repository';
 
@@ -12,8 +11,6 @@ test('Create new city', async () => {
 });
 
 test('Find city by name', async () => {
-    await initDataSource.execute();
-
     const city = 'Lyon, WV';
 
     const customers = await customerRepository.findMany({ city });
@@ -25,8 +22,6 @@ test('Find city by name', async () => {
 });
 
 test('Find city by name (Not finding)', async () => {
-    await initDataSource.execute();
-
     await expect(cityService.findOne('No city')).rejects.toThrowError();
 });
 

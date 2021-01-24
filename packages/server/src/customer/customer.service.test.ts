@@ -2,7 +2,6 @@ import { GoogleProvider } from '../providers/location/google.provider';
 import { CustomerService } from './customer.service';
 import { customerRepository } from './repository/customer.repository';
 import { NodeCacheProvider } from '../providers/cache/node-cache.provider';
-import { initDataSource } from '../init-data-source';
 
 const cacheProvider = new NodeCacheProvider();
 const locationProvider = new GoogleProvider(cacheProvider);
@@ -16,8 +15,6 @@ test('Create new customer', async () => {
 });
 
 test('Find customer by ID', async () => {
-    await initDataSource.execute();
-
     await expect(customerService.findOne(2, false)).resolves.toMatchObject({
         id: 2,
         first_name: 'Margaret',
@@ -31,15 +28,11 @@ test('Find customer by ID', async () => {
 });
 
 test('Find customer by ID (Not finding)', async () => {
-    await initDataSource.execute();
-
     await expect(customerService.findOne(1010, false)).rejects.toThrowError();
 });
 
 test('Find many users from a given city', async () => {
-    // await initDataSource.execute();
-
     const customers = await customerService.findMany({ city: 'Warner, NH' }, undefined, false);
 
-    expect(customers.length).toBe(40);
+    expect(customers.length).toBe(20);
 });

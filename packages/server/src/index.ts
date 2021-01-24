@@ -4,13 +4,14 @@ import 'dotenv/config';
 import 'reflect-metadata';
 
 import express from 'express';
-import { initDataSource } from './init-data-source';
+
 import { setupGraphQL } from './setup/graphql.setup';
+import { initialSetup } from './setup/init.setup';
 import { setupServer } from './setup/server.setup';
 
 async function bootstrap() {
     // initial setup
-    await initDataSource.execute();
+    await initialSetup();
 
     // express initial setup
     const app = express();
