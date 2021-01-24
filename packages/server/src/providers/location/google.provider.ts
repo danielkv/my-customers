@@ -13,7 +13,7 @@ export class GoogleProvider implements ILocationProvider {
      */
     async searchCoordinates(search: string): Promise<ICoordinates> {
         // escape search
-        const scapedSearch = escape(search);
+        const scapedSearch = escape(search.replace(/\,/g, ''));
 
         // check results in cache
         const cachedCoordinates = await this.cacheProvider.get(scapedSearch);

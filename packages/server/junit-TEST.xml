@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="12" failures="0" errors="0" time="4.926">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T00:33:24" time="1.388" tests="1">
-    <testcase classname=" Initialized data source" name=" Initialized data source" time="0.003">
+<testsuites name="jest tests" tests="13" failures="0" errors="0" time="6.739">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T23:01:12" time="1.639" tests="3">
+    <testcase classname=" Node cache save cache value" name=" Node cache save cache value" time="0.003">
+    </testcase>
+    <testcase classname=" Node cache retrieve value from cache" name=" Node cache retrieve value from cache" time="0">
+    </testcase>
+    <testcase classname=" Node cache remove value from cache" name=" Node cache remove value from cache" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T00:33:24" time="1.4" tests="4">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T23:01:12" time="5.56" tests="1">
+    <testcase classname=" Initialized data source" name=" Initialized data source" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T23:01:12" time="5.921" tests="1">
+    <testcase classname=" Find location" name=" Find location" time="0.192">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T23:01:12" time="5.913" tests="4">
     <testcase classname=" Create new city" name=" Create new city" time="0.003">
     </testcase>
     <testcase classname=" Find city by name" name=" Find city by name" time="0.001">
@@ -14,22 +26,14 @@
     <testcase classname=" Find many users from a given city" name=" Find many users from a given city" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T00:33:24" time="1.396" tests="3">
-    <testcase classname=" Node cache save cache value" name=" Node cache save cache value" time="0.003">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T23:01:12" time="6.112" tests="4">
+    <testcase classname=" Create new customer" name=" Create new customer" time="0.004">
     </testcase>
-    <testcase classname=" Node cache retrieve value from cache" name=" Node cache retrieve value from cache" time="0.001">
-    </testcase>
-    <testcase classname=" Node cache remove value from cache" name=" Node cache remove value from cache" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-24T00:33:24" time="4.345" tests="4">
-    <testcase classname=" Create new customer" name=" Create new customer" time="0.003">
-    </testcase>
-    <testcase classname=" Find customer by ID" name=" Find customer by ID" time="0.001">
+    <testcase classname=" Find customer by ID" name=" Find customer by ID" time="0">
     </testcase>
     <testcase classname=" Find customer by ID (Not finding)" name=" Find customer by ID (Not finding)" time="0.004">
     </testcase>
-    <testcase classname=" Find many users from a given city" name=" Find many users from a given city" time="0.002">
+    <testcase classname=" Find many users from a given city" name=" Find many users from a given city" time="0">
     </testcase>
   </testsuite>
 </testsuites>
