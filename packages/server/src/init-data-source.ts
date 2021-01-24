@@ -1,4 +1,3 @@
-import customersData from '../customers.json';
 import { ICity } from './cities/city.interface';
 import { City } from './cities/city.model';
 import { ICityRepository } from './cities/repository/city-repository.interface';
@@ -14,7 +13,7 @@ class InitDataSource {
     /**
      * Execute all actions to insert all data to repository
      */
-    async execute(): Promise<void> {
+    async execute(customersData: ICustomer[]): Promise<void> {
         await this.insertCities(customersData);
         await this.insertCustomers(customersData);
     }

@@ -4,18 +4,19 @@ Project made for interview test
 
 ## Table of contents
 
-- [My Customers](#my-customers)
-	- [Table of contents](#table-of-contents)
-	- [How to run this project](#how-to-run-this-project)
-	- [Dashboard](#dashboard)
-	- [API Documentation](#api-documentation)
-		- [REST API](#rest-api)
-			- [Endpoints](#endpoints)
-		- [GraphQL API](#graphql-api)
-			- [Endpoint](#endpoint)
-			- [Query](#query)
-			- [Types](#types)
-			- [Input](#input)
+-   [My Customers](#my-customers)
+    -   [Table of contents](#table-of-contents)
+    -   [How to run this project](#how-to-run-this-project)
+    -   [Run tests](#run-tests)
+    -   [Dashboard](#dashboard)
+    -   [API Documentation](#api-documentation)
+        -   [REST API](#rest-api)
+            -   [Endpoints](#endpoints)
+        -   [GraphQL API](#graphql-api)
+            -   [Endpoint](#endpoint)
+            -   [Query](#query)
+            -   [Types](#types)
+            -   [Input](#input)
 
 ## How to run this project
 
@@ -30,6 +31,22 @@ docker-compose up
 ```
 
 The **dashboard** should be running on `https://localhost:3000` and the **server API** on `https://localhost:3001`
+
+## Run tests
+
+To run tests, you just need to run this line in the **terminal** in the root folder of repository
+
+With yarn:
+
+```
+yarn test
+```
+
+With npm:
+
+```
+npm run test
+```
 
 ## Dashboard
 

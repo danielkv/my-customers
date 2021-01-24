@@ -2,10 +2,11 @@
     "name": "my-customers",
     "version": "1.0.0",
     "author": "Daniel K. Guolo <danielkv@gmail.com>",
-    "main": "index.js",
     "license": "MIT",
     "private": true,
-    "scripts": {},
+    "scripts": {
+        "test": "jest"
+    },
     "workspaces": {
         "packages": [
             "packages/*"

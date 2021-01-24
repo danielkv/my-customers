@@ -1,5 +1,8 @@
 import { initDataSource } from '../init-data-source';
+import { ICustomer } from '../customer/customer.interface';
+import customerData from '../customers.json';
 
 export async function initialSetup() {
-    await initDataSource.execute();
+    const dataSource: ICustomer[] = customerData;
+    await initDataSource.execute(dataSource);
 }

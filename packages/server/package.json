@@ -8,8 +8,8 @@
     "scripts": {
         "test": "jest",
         "dev": "ts-node-dev --transpile-only src/index.ts",
-        "build": "tsc --outDir build",
-        "start": "node build/src"
+        "build": "tsc",
+        "start": "node build"
     },
     "devDependencies": {
         "@babel/core": "^7.12.10",
