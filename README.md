@@ -1,6 +1,6 @@
 # My Customers
 
-Project made for interview test
+Simple project listing customers and its location. `Backend` was develop on `NodeJS` on top of `ExpressJs` lib and Frontend was develop on top of `NextJS`
 
 ## Table of contents
 
